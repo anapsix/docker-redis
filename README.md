@@ -6,9 +6,16 @@ AlpineLinux-base Docker image with Redis
 
 ## Usage
 
-Quick start: `docker run -d -p 6379:6379 -v /data/redis:/var/lib/redis anapsix/redis`
+as Server:
 
-### Configuration
+    docker run -d --name redis-server -p 6379:6379 -v /data/redis:/var/lib/redis anapsix/redis
+
+as Client:
+
+    docker run -it --rm --link redis-server:my-redis-server anapsix/redis redis-cli -h my-redis-server info
+    docker run -it --rm anapsix/redis redis-cli -h redis-server-ip-or-host.com info
+
+## Configuration
 
 You may pass config options via command line, as you normally would:
 

@@ -9,3 +9,4 @@ VOLUME /var/lib/redis
 EXPOSE 6379
 
 ENTRYPOINT ["/entrypoint.sh"]
+CMD ["--dir", "/var/lib/redis"]

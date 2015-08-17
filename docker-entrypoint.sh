@@ -1,8 +1,12 @@
 #!/bin/sh
 set -e
 
-if [ "$#" -eq 0 ] || [ "${1:0:1}" = '-' ]; then
-  set -- redis-server "$@"
+if ! expr match "$@" '\(.*dir\)'; then
+  DIR="--dir /var/lib/redis"
+fi
+
+if [ "$#" -eq 0 ] || [ "${1:0:1}" = '-' ]; then 
+  set -- redis-server "${DIR:+$DIR}" "$@"
 fi
 
 exec "$@"

@@ -15,6 +15,9 @@ as Client:
     docker run -it --rm --link redis-server:my-redis-server anapsix/redis redis-cli -h my-redis-server info
     docker run -it --rm anapsix/redis redis-cli -h redis-server-ip-or-host.com info
 
+> NOTE: You may override where `dump.rdb` is saved by passing `--dir /some/other/path`. If `--dir` is not passed,
+        it will default to `/var/lib/redis`.
+
 ## Configuration
 
 You may pass config options via command line, as you normally would:

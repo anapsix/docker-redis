@@ -15,12 +15,11 @@ as Client:
     docker run -it --rm --link redis-server:my-redis-server anapsix/redis redis-cli -h my-redis-server info
     docker run -it --rm anapsix/redis redis-cli -h redis-server-ip-or-host.com info
 
-> NOTE: You may override where `dump.rdb` is saved by passing `--dir /some/other/path`. If `--dir` is not passed,
-        it will default to `/var/lib/redis`.
+> NOTE: You may override default config options by mounting your config as `-v my_redis.conf:/etc/redis.conf` or passing command line arguments to container. You can modify any supported setting with command line arguments **except config file location**.
 
 ## Configuration
 
-You may pass config options via command line, as you normally would:
+You may pass config options via command line, as you normally would (except config file location):
 
     docker run -d -p 6379:6379 \
       -v /data/redis:/var/lib/redis \
